@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import useInfiniteScroll from '../hooks/useInfinity';
+import useInfiniteScroll from '../hooks/useInfiniteScroll';
 import axios from 'axios';
 import useDebounce from '../hooks/useDebounce';
 import { useRecoilState } from 'recoil';
@@ -42,7 +42,7 @@ const MainPage: React.FC = () => {
 
   const fetchImages = async () => {
     try {
-      const response = await axios.get(`${API_URL}?page=1&per_page=20&query=popular&order_by=popular&client_id=${API_KEY}`);
+      const response = await axios.get(`${API_URL}?page=1&per_page=10&query=popular&order_by=popular&client_id=${API_KEY}`);
       const imagesData = response.data.results.map((result: any) => ({
         url: result.urls.regular,
         title: result.alt_description,
@@ -98,7 +98,7 @@ const MainPage: React.FC = () => {
   const fetchMoreImages = async () => {
     try {
       const nextPage = page + 1;
-      const response = await axios.get(`${API_URL}?page=${nextPage}&per_page=20&query=car&order_by=popular&client_id=${API_KEY}`);
+      const response = await axios.get(`${API_URL}?page=${nextPage}&per_page=20&query=dog&order_by=popular&client_id=${API_KEY}`);
       const moreImages = response.data.results.map((result: any) => ({
         url: result.urls.regular,
         title: result.alt_description,
@@ -107,8 +107,10 @@ const MainPage: React.FC = () => {
       }));
       setImages(prevImages => [...prevImages, ...moreImages]);
       setPage(nextPage);
+      console.log("nana")
     } catch (error) {
       console.error('Error fetching more images:', error);
+      console.log("erooor")
     }
   };
 
@@ -117,13 +119,15 @@ const MainPage: React.FC = () => {
   return (
     <div>
       <h1 className="header">MainPage</h1>
+      <div className='input'>
       <input
-        className='input'
+        
         type="text"
         placeholder='Input text for search'
         value={inputValue}
         onChange={inputHandler}
       />
+      </div>
 
     
 

@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { searchHistoryState } from '../../recoilState';
-import useInfiniteScroll from '../hooks/useInfinity';
+import useInfiniteScroll from '../hooks/useInfiniteScroll';
 import './history.css';
 
 const API_URL: string = "https://api.unsplash.com/search/photos";
