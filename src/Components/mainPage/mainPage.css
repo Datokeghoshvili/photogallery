@@ -1,12 +1,16 @@
 .input-container {
-  margin-bottom: 20px; /* Adjust margin as needed */
+  margin-bottom: 40px; /* Adjust margin as needed */
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .input-container input {
-  width: 100%;
+  width: 70%;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #734141;
   border-radius: 4px;
   text-align: center;
   box-sizing: border-box;
@@ -19,14 +23,14 @@
 }
 
 .image-item {
-  border: 1px solid #ccc;
+  border: 3px solid #894f4f;
   padding: 10px;
   border-radius: 4px;
 }
 
 .image-item img {
   width: 100%;
-  height: auto;
+  height: 40vh;
   border-radius: 4px;
 }
 
