@@ -1,25 +1,36 @@
+.input-container {
+  margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+.input-container input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
 .image-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  padding: 20px;
 }
 
 .image-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
 }
 
 .image-item img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
 
 .image-item p {
   margin-top: 10px;
   font-size: 14px;
-  color: #333;
 }

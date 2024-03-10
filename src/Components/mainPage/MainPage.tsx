@@ -118,18 +118,15 @@ const MainPage: React.FC = () => {
 
   return (
     <div>
-      <h1 className="header">MainPage</h1>
-      <div className='input'>
-      <input
-        
-        type="text"
-        placeholder='Input text for search'
-        value={inputValue}
-        onChange={inputHandler}
-      />
+      <h1 className="header">It's Our MainPage</h1>
+      <div className='input-container'>
+        <input
+          type="text"
+          placeholder='Input text for search'
+          value={inputValue}
+          onChange={inputHandler}
+        />
       </div>
-
-    
 
       {loading ? (
         <p>Loading....</p>
