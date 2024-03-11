@@ -1,6 +1,6 @@
 // History.tsx
 
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { useRecoilValue } from 'recoil';
 import axios from 'axios';
 import Modal from 'react-modal';
@@ -62,10 +62,8 @@ const History: React.FC = () => {
 
   const handleImageClick = async (image: ImageType) => {
     setSelectedImage(image);
-    console.log("handleimageclick")
-    // fetchImages(image.url)
-    
-
+    console.log("handleimageclick");
+  
     setModalIsOpen(true);
   };
 
