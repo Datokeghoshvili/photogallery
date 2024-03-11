@@ -58,11 +58,7 @@ const History: React.FC = () => {
     }
   };
 
-  // useEffect(() => {
-  //   if (searchHistory.length > 0) {
-  //     fetchImages(searchHistory[searchHistory.length - 1]);
-  //   }
-  // }, [searchHistory]);
+ 
 
   const handleImageClick = async (image: ImageType) => {
     setSelectedImage(image);
