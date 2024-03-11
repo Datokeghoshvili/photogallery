@@ -1,8 +1,10 @@
 
 nav {
-    background-color: #774c4c; /* Background color of the nav bar */
+    background-color:transparent #1e1d1d; /* Background color of the nav bar */
     padding: 20px; /* Padding around the nav bar */
     display: flex;
+    
+
     justify-content:space-around;
   }
   

@@ -21,23 +21,25 @@ type ImageType = {
 
 const History: React.FC = () => {
   const searchHistory = useRecoilValue(searchHistoryState);
-  const [selectedImage, setSelectedImage] = useState<ImageType | null>(null);
-  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [images, setImages] = useState<ImageType[]>([]);
-  const [page, setPage] = useState<number>(1);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<ImageType | null>(null);// State to hold the currently selected image when clicking on an image
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);//State to control the visibility of the modal that displays image details.
+  const [images, setImages] = useState<ImageType[]>([]);// State to store the fetched images.
+  const [page, setPage] = useState<number>(1);//: State to keep track of the current page of images fetched.
+  const [loading, setLoading] = useState<boolean>(false);//State to indicate whether images are currently being fetched (loading state).
 
   const fetchImages = async (searchTerm: string) => {
+    setImages([])
     try {
       setLoading(true);
       const response = await axios.get(API_URL, {
         params: {
-          query: searchTerm,
+          query: searchTerm,//selectedImage
           client_id: API_KEY,
           page: page,
           per_page: 10, // Number of images per page
         }
       });
+
 
       const newImages = response.data.results.map((result: any) => ({
         url: result.urls.regular,
@@ -56,14 +58,18 @@ const History: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    if (searchHistory.length > 0) {
-      fetchImages(searchHistory[searchHistory.length - 1]);
-    }
-  }, [searchHistory]);
+  // useEffect(() => {
+  //   if (searchHistory.length > 0) {
+  //     fetchImages(searchHistory[searchHistory.length - 1]);
+  //   }
+  // }, [searchHistory]);
 
   const handleImageClick = async (image: ImageType) => {
     setSelectedImage(image);
+    console.log("handleimageclick")
+    // fetchImages(image.url)
+    
+
     setModalIsOpen(true);
   };
 
@@ -73,20 +79,27 @@ const History: React.FC = () => {
   };
 
   const isFetching = useInfiniteScroll(() => fetchImages(searchHistory[searchHistory.length - 1]));
-
   return (
     <div className="history-container">
+      
       <h1 className="history-title">Searched Names History</h1>
       <ul className='history-list'>
+        
         {searchHistory.map((item, index) => (
           <li
             className='history-item'
             key={index}
             onClick={() => fetchImages(item)}
-          >
+            
+            
+          > 
             {item}
+          
+          
           </li>
+        
         ))}
+      
       </ul>
 
       <Modal
@@ -95,7 +108,7 @@ const History: React.FC = () => {
         contentLabel="Image Modal"
         className="image-modal"
         overlayClassName="image-modal-overlay"
-      >
+        >
         <button onClick={closeModal} className="close-button">Close</button>
         {selectedImage && (
           <>
@@ -119,6 +132,7 @@ const History: React.FC = () => {
         ))}
         {isFetching && <p>Loading more...</p>}
       </div>
+  
     </div>
   );
 };
