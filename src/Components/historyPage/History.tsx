@@ -32,23 +32,15 @@ const History: React.FC = () => {
       setLoading(true);
       const response = await axios.get(API_URL, {
         params: {
-          query: searchTerm,//selectedImage
+          query: searchTerm,
           client_id: API_KEY,
           page: page,
           per_page: 10, // Number of images per page
         }
       });
-      interface UnsplashImageResult {
-        urls: {
-          regular: string;
-        };
-        alt_description: string;
-        likes: number;
-        downloads: number;
-        views: number;
-      }
+     
 
-      const newImages = response.data.results.map((result: UnsplashImageResult) => ({
+      const newImages = response.data.results.map((result: any) => ({
         url: result.urls.regular,
         title: result.alt_description,
         likes: result.likes,
@@ -86,7 +78,7 @@ const History: React.FC = () => {
       <h1 className="history-title">Searched Names History</h1>
       <ul className='history-list'>
         
-        {searchHistory.map((item:string, index) => (
+        {searchHistory.map((item, index) => (
           <li
             className='history-item'
             key={index}
