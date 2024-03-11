@@ -1,4 +1,3 @@
-// History.tsx
 
 import React, { useState} from 'react';
 import { useRecoilValue } from 'recoil';
@@ -39,9 +38,17 @@ const History: React.FC = () => {
           per_page: 10, // Number of images per page
         }
       });
+      interface UnsplashImageResult {
+        urls: {
+          regular: string;
+        };
+        alt_description: string;
+        likes: number;
+        downloads: number;
+        views: number;
+      }
 
-
-      const newImages = response.data.results.map((result: any) => ({
+      const newImages = response.data.results.map((result: UnsplashImageResult) => ({
         url: result.urls.regular,
         title: result.alt_description,
         likes: result.likes,
@@ -79,7 +86,7 @@ const History: React.FC = () => {
       <h1 className="history-title">Searched Names History</h1>
       <ul className='history-list'>
         
-        {searchHistory.map((item, index) => (
+        {searchHistory.map((item:string, index) => (
           <li
             className='history-item'
             key={index}
