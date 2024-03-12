@@ -6,6 +6,7 @@ import { searchHistoryState } from '../../recoilState';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
 import './history.css';
 
+
 const API_URL = "https://api.unsplash.com/search/photos";
 const API_KEY = "Ui9hjn0niqq5EsmFspxFvaLllw8MLZqxcRHTAdyDwfc";
 
