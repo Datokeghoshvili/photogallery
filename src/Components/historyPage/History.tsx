@@ -19,7 +19,7 @@ type ImageType = {
 
 const History: React.FC = () => {
   const searchHistory = useRecoilValue(searchHistoryState);
-  const [clickedimage, setClickedimage] = useState<string>(''); // Corrected initial state to be a string
+  const [clickedImage, setClickedImage] = useState<string>(''); // Corrected initial state to be a string
   const [selectedImage, setSelectedImage] = useState<ImageType | null>(null);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [images, setImages] = useState<ImageType[]>([]);
@@ -28,7 +28,8 @@ const History: React.FC = () => {
 
   // Adjusted to use the correct string type for searchTerm
   const fetchImages = async (searchTerm: string) => {
-    if (!searchTerm) return; // Do nothing if searchTerm is empty
+    if (!searchTerm) 
+      return; // Do nothing if searchTerm is empty
     
     try {
       setLoading(true);
@@ -60,10 +61,10 @@ const History: React.FC = () => {
     // Resets
     setPage(1);
     setImages([]);
-    if (clickedimage) {
-      fetchImages(clickedimage);
+    if (clickedImage) {
+      fetchImages(clickedImage);
     }
-  }, [clickedimage]);
+  }, [clickedImage]);
 
   const handleImageClick = (image: ImageType) => {
     setSelectedImage(image);
@@ -76,9 +77,8 @@ const History: React.FC = () => {
   };
 
   // Using useInfiniteScroll for more fetching based on scroll, adjust as needed
-  // Make sure your useInfiniteScroll hook is capable of handling the logic correctly
-  // This example assumes useInfiniteScroll calls the provided function when more items should be fetched
-  useInfiniteScroll(() => fetchImages(clickedimage));
+ 
+  useInfiniteScroll(() => fetchImages(clickedImage));
 
   return (
     <div className="history-container">
@@ -88,7 +88,7 @@ const History: React.FC = () => {
           <li
             className='history-item'
             key={index}
-            onClick={() => setClickedimage(item)}
+            onClick={() => setClickedImage(item)}
           > 
             {item}
           </li>
